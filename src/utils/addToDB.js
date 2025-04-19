@@ -1,6 +1,6 @@
 import Swal from "sweetalert2";
 
-const getStoredBook = () => {
+export const getStoredBook = () => {
 
     const storedBookSTR = localStorage.getItem("readList");
 
