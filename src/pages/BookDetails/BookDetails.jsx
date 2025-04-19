@@ -1,5 +1,6 @@
 import React from "react";
 import { useLoaderData, useParams } from "react-router";
+import { addToStoredDB } from "../../utils/addToDB";
 
 const BookDetails = () => {
   const { id } = useParams();
@@ -19,6 +20,17 @@ const BookDetails = () => {
     publisher,
     rating,
   } = singleBook;
+
+  // handler
+
+  const handleMarkAsRead = (id) => {
+    // store with id
+    // where to store
+    // array or collection
+    // if book already exixt then show a alert
+    // if book not exixt then push in the collection or array
+    addToStoredDB(id);
+  };
 
   return (
     <div className="hero bg-base-200 min-h-screen ">
@@ -56,9 +68,14 @@ const BookDetails = () => {
               <span>{rating}</span>
             </p>
           </div>
-          <div className="flex justify-end">
+          <div className="flex justify-start gap-4">
             {" "}
-            <button className="btn btn-ghost">Read</button>
+            <button
+              onClick={() => handleMarkAsRead(id)}
+              className="btn btn-accent"
+            >
+              Mark as Read
+            </button>
             <button className="btn btn-primary">Wishlist</button>
           </div>
         </div>
